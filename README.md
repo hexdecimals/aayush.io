@@ -1,33 +1,10 @@
-# :rocket: Next.JS Boilerplate
+<img src="https://raw.githubusercontent.com/hexdecimals/aayush.io/main/public/main.png" height="250px" width='100%' alt="banner" />
 
-A very minimalistic Next.JS boilerplate written in typescript.
+# :fire: Personal website and blog.
 
-### Made with:
+A minimalistic Next.JS blog with no backend made possible with [GitHub GraphQL Discussion API](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions). <br />
+[Boilerplate used as base.](https://github.com/hexdecimals/nextjs-boilerplate)
 
-- :zap: NextJS
-- :art: Tailwind
-- :lock: Typescript
-- :hammer: Eslint
-- :paintbrush: Prettier
-
-### Getting started:
-
-```shell
-$ git clone https://github.com/hexdecimals/nextjs-boilerplate.git my-app
-$ cd my-app
-$ yarn install
-$ yarn dev
-```
-
-### Path aliases:
-
-```json
-"@/styles/*": "./src/styles/*",
-"@/pages/*": "./src/pages/*",
-"@/api/*": "./src/pages/api/*",
-"@/components/*": "./src/components/*",
-"@/layouts/*": "./src/components/layouts/*",
-"@/public/*": "./public/*",
-```
+Deployed on [Vercel](https://vercel.com)
 
 [LICENSE](LICENSE)

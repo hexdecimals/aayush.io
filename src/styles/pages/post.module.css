@@ -1,0 +1,20 @@
+.post {@apply py-6}
+
+.post h1 {@apply text-5xl}
+.post h2 {@apply text-4xl}
+.post h3 {@apply text-3xl}
+.post h4 {@apply text-2xl}
+.post h5 {@apply text-xl}
+.post h6 {@apply text-lg}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  @apply mb-3 text-white
+}
+
+.post p {@apply mb-1}
+.post pre {@apply my-2 py-5 px-4 bg-secondary rounded-lg overflow-x-auto shadow}

@@ -26,14 +26,20 @@
       "@/pages/*": [
         "./src/pages/*"
       ],
-      "@/api/*": [
-        "./src/pages/api/*"
-      ],
       "@/components/*": [
         "./src/components/*"
       ],
       "@/layouts/*": [
         "./src/components/layouts/*"
+      ],
+      "@/interface/*": [
+        "./src/interface/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/util/*": [
+        "./src/util/*"
       ],
       "@/public/*": [
         "./public/*"

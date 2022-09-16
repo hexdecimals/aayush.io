@@ -1,18 +1,47 @@
 import type { NextPage } from 'next';
-import { Code } from '@/components/code';
+import { Seo } from '@/components/seo';
+
+const Links = [
+  {
+    name: 'GitHub',
+    duration: 1,
+    url: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+  },
+  {
+    name: 'Twitter',
+    duration: 1.3,
+    url: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+  },
+];
 
 const IndexPage: NextPage = () => (
-  <div className="flex min-h-screen flex-col items-center justify-center text-center">
-    <h1 className="text-6xl font-bold">
-      Welcome to{' '}
-      <a className="text-blue-600" href="https://nextjs.org">
-        Next.js!
-      </a>
-    </h1>
-    <p className="mt-3 text-2xl">
-      Get started by editing <Code>src/pages/index.tsx</Code>
-    </p>
-  </div>
+  <>
+    <Seo description="Personal website and a blog, mostly related to web technologies." />
+    <div className="hero flex h-[calc(100vh-15vh)] flex-col justify-center space-y-3">
+      <h1 className="text-5xl font-black">Hello World! 👋</h1>
+
+      <p className="text-lg leading-7 tracking-wide md:text-xl">
+        I&lsquo;m Aayush, a self-taught fullstack developer with experience in{' '}
+        <code>NextJS</code>, <code>ReactJS</code>, <code>Prisma</code>,{' '}
+        <code>ExpressJS</code>, etc.
+      </p>
+
+      <div className="flex space-x-2">
+        {Links.map((link) => (
+          <div key={link.name}>
+            <a
+              className="rounded-lg bg-slate py-2 px-4"
+              href={link.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.name}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
 );
 
 export default IndexPage;

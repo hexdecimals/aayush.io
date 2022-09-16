@@ -13,12 +13,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^2.2.0",
+    "@primer/octicons-react": "^17.5.0",
+    "@urql/core": "^3.0.3",
+    "framer-motion": "^7.3.5",
+    "graphql": "^16.6.0",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.6.0",
+    "marked": "^4.1.0",
+    "moment": "^2.29.4",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.2.5",
+    "@types/marked": "^4.0.7",
     "@types/node": "18.7.15",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
