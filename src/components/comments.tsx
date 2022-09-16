@@ -13,7 +13,7 @@ const Comment = ({ post }: { post: Prop }) => {
     <Giscus
       id="comments"
       repo="hexdecimals/aayush.io"
-      repoId="R_kgDOH-y4IA"
+      repoId={process.env.NEXT_PUBLIC_GITHUB_REPO_ID ?? ''}
       category={post.category.name}
       categoryId={post.category.id}
       mapping="number"
