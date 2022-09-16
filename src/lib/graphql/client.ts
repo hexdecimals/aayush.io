@@ -1,7 +1,7 @@
 import { createClient } from '@urql/core';
 
 export default createClient({
-  url: process.env.GITHUB_API_URL ?? '',
+  url: 'https://api.github.com/graphql',
   fetchOptions: () => {
     return {
       headers: {

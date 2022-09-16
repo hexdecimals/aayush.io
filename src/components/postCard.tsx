@@ -1,7 +1,7 @@
-import IPost from '@/interface/IPost';
+import IGetRecentPosts from '@/interface/IGetRecentPosts';
 import Link from 'next/link';
 
-const PostCard = ({ post }: { post: IPost }) => (
+const PostCard = ({ post }: { post: IGetRecentPosts }) => (
   <Link href={'blog/' + post.slug}>
     <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
       <div className="text-base font-medium leading-6">{post.createdAt}</div>

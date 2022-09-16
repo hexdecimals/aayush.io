@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import moment from 'moment';
 import { marked } from 'marked';
 import HLjs from 'highlight.js';
-import IPost from '@/interface/IPost';
+import IGetPostBySlug, { ITag } from '@/interface/IGetPostBySlug';
 
 marked.setOptions({
   highlight: function (code: string) {
@@ -10,7 +10,12 @@ marked.setOptions({
   },
 });
 
-export default async function formatPostSlug({ node }: { node: IPost }) {
+interface Prop extends IGetPostBySlug {
+  body: string;
+  labels: { edges: [{ node: ITag }] };
+}
+
+export default async function formatPostSlug({ node }: { node: Prop }) {
   const { data: frontMatter, content: markdownContent } = matter(node.body);
 
   const compiled = marked.parse(markdownContent);
@@ -24,7 +29,7 @@ export default async function formatPostSlug({ node }: { node: IPost }) {
     createdAt: moment(node.createdAt).format('LL'),
     content: String(compiled),
 
-    updatedAt:
+    lastEditedAt:
       node.lastEditedAt && moment(node.lastEditedAt).startOf('hour').fromNow(),
 
     category: node.category && {

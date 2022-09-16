@@ -1,12 +1,10 @@
 import matter from 'gray-matter';
 import moment from 'moment';
+import IGetRecentPosts from '@/interface/IGetRecentPosts';
 
-type Prop = {
-  id: string;
-  title: string;
+interface Prop extends IGetRecentPosts {
   body: string;
-  createdAt: Date;
-};
+}
 
 export default async function mapPost({ node }: { node: Prop }) {
   const { data: frontMatter } = matter(node.body);

@@ -1,6 +1,6 @@
 import type { NextPageWithLayout } from '../_app';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { ReactElement } from 'react';
+import { ReactElement, useRef } from 'react';
 import { useScroll, motion, useSpring } from 'framer-motion';
 
 import { Seo } from '@/components/seo';
@@ -14,12 +14,15 @@ import getPostBySlug from '@/lib/graphql/getPostBySlug';
 const PostPage: NextPageWithLayout = ({
   post,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { scrollYProgress } = useScroll();
+  const carouselRef = useRef(null);
+  const { scrollYProgress } = useScroll({ container: carouselRef });
+
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
   return (
     <>
       <Seo title={post.title} description={post.description} />
@@ -27,7 +30,7 @@ const PostPage: NextPageWithLayout = ({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
+        transition={{ delay: 0.5 }}
         className="fixed left-5 top-0 bottom-0 hidden h-full items-center lg:flex"
       >
         <div className="w-1 bg-secondary">
@@ -39,7 +42,10 @@ const PostPage: NextPageWithLayout = ({
         </div>
       </motion.div>
 
-      <Post post={post} />
+      <div ref={carouselRef}>
+        <Post post={post} />
+      </div>
+
       <Comment post={post} />
     </>
   );
@@ -49,10 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params,
 }) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  );
+  res.setHeader('Cache-Control', 'public, s-maxage=60');
 
   const slug = params?.slug as string;
   const { data } = await client

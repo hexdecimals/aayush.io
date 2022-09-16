@@ -1,10 +1,9 @@
 import { Badge } from '@/components/badge';
 import style from '@/styles/pages/post.module.css';
-import IPost from '@/interface/IPost';
-import ITag from '@/interface/IPost';
 import { CalendarIcon, PencilIcon } from '@primer/octicons-react';
+import IGetPostBySlug from '@/interface/IGetPostBySlug';
 
-const Post = ({ post }: { post: IPost }) => {
+const Post = ({ post }: { post: IGetPostBySlug }) => {
   return (
     <article>
       <header className="space-y-4 border-b border-slate pb-6 md:space-y-6">
@@ -14,9 +13,7 @@ const Post = ({ post }: { post: IPost }) => {
           <div className="space-x-2">
             {post.tags &&
               post.tags.length !== 0 &&
-              post.tags.map((tag: ITag) => (
-                <Badge key={tag.name}>{tag.name}</Badge>
-              ))}
+              post.tags.map((tag) => <Badge key={tag.name}>{tag.name}</Badge>)}
           </div>
 
           <div className="flex space-x-4 md:justify-end">
@@ -26,23 +23,20 @@ const Post = ({ post }: { post: IPost }) => {
               <dt>{post.createdAt}</dt>
             </span>
 
-            {post.updatedAt && (
+            {post.lastEditedAt && (
               <span className="flex items-center space-x-2">
                 <PencilIcon size={20} />
                 <dd className="sr-only">Last updated</dd>
-                <dt>{post.updatedAt}</dt>
+                <dt>{post.lastEditedAt}</dt>
               </span>
             )}
           </div>
         </div>
       </header>
-
-      {post.content && (
-        <div
-          className={style.post}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      )}
+      <div
+        className={style.post}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </article>
   );
 };

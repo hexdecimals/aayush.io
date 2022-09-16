@@ -8,7 +8,8 @@ import BlogLayout from '@/layouts//blog';
 import formatPostList from '@/util/formatPostList';
 import client from '@/lib/graphql/client';
 import getRecentPosts from '@/lib/graphql/getRecentPosts';
-import IPost from '@/interface/IPost';
+import { motion } from 'framer-motion';
+import IGetRecentPosts from '@/interface/IGetRecentPosts';
 
 const IndexPage: NextPageWithLayout = ({
   posts,
@@ -20,10 +21,15 @@ const IndexPage: NextPageWithLayout = ({
       <h1 className="pb-6 text-3xl md:text-5xl">Recent Posts</h1>
 
       <ul className="divide-y divide-slate">
-        {posts.map((post: IPost) => (
-          <li className="py-5 px-2 hover:cursor-pointer" key={post.id}>
+        {posts.map((post: IGetRecentPosts) => (
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            className="py-5 px-2 hover:cursor-pointer"
+            key={post.id}
+          >
             <PostCard post={post} />
-          </li>
+          </motion.li>
         ))}
       </ul>
     </>
@@ -33,7 +39,7 @@ const IndexPage: NextPageWithLayout = ({
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
+    'public, s-maxage=60, stale-while-revalidate=59'
   );
 
   const { data } = await client

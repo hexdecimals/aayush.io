@@ -1,4 +1,5 @@
 import Giscus from '@giscus/react';
+// import { useEffect, useState } from 'react';
 
 interface Prop {
   category: {
@@ -19,11 +20,11 @@ const Comment = ({ post }: { post: Prop }) => {
       mapping="number"
       term={post.number}
       reactionsEnabled="1"
-      emitMetadata="0"
+      emitMetadata="1"
       inputPosition="top"
       theme="dark_dimmed"
       lang="en"
-      loading="lazy"
+      // loading="lazy"
     />
   );
 };
