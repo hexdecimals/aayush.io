@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import moment from 'moment';
 import { marked } from 'marked';
 import HLjs from 'highlight.js';
-import IGetPostBySlug, { ITag } from '@/interface/IGetPostBySlug';
+import IGetPostByQuery, { ITag } from '@/interface/IGetPostByQuery';
 
 marked.setOptions({
   highlight: function (code: string) {
@@ -10,7 +10,7 @@ marked.setOptions({
   },
 });
 
-interface Prop extends IGetPostBySlug {
+interface Prop extends IGetPostByQuery {
   body: string;
   labels: { edges: [{ node: ITag }] };
 }

@@ -3,7 +3,7 @@ export interface ITag {
   color: string;
 }
 
-export default interface IGetPostBySlug {
+export default interface IGetPostByQuery {
   number: string;
   id: string;
   slug: string;

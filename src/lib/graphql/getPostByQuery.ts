@@ -1,8 +1,8 @@
 import { gql } from '@urql/core';
 
 export default gql`
-  query ($query: String!) {
-    search(query: $query, type: DISCUSSION, first: 1) {
+  query ($query: String!, $first: Int!) {
+    search(query: $query, type: DISCUSSION, first: $first) {
       edges {
         node {
           ... on Discussion {

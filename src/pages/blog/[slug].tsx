@@ -9,7 +9,7 @@ import { Comment } from '@/components/comments';
 import BlogLayout from '@/layouts/blog';
 import formatPostSlug from '@/util/formatPostSlug';
 import client from '@/lib/graphql/client';
-import getPostBySlug from '@/lib/graphql/getPostBySlug';
+import getPostByQuery from '@/lib/graphql/getPostByQuery';
 
 const PostPage: NextPageWithLayout = ({
   post,
@@ -59,8 +59,9 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const slug = params?.slug as string;
   const { data } = await client
-    .query(getPostBySlug, {
-      query: `slug: ${slug} in:body repo:${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/${process.env.NEXT_PUBLIC_GITHUB_REPO}`,
+    .query(getPostByQuery, {
+      query: `"slug: ${slug}" in:body repo:${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/${process.env.NEXT_PUBLIC_GITHUB_REPO}`,
+      first: 1,
     })
     .toPromise();
   if (!data || !data.search || !data.search.edges || !data.search.edges[0]) {

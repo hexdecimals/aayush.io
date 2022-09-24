@@ -1,9 +1,9 @@
 import { Badge } from '@/components/badge';
 import style from '@/styles/pages/post.module.css';
 import { CalendarIcon, PencilIcon } from '@primer/octicons-react';
-import IGetPostBySlug from '@/interface/IGetPostBySlug';
+import IGetPostByQuery from '@/interface/IGetPostByQuery';
 
-const Post = ({ post }: { post: IGetPostBySlug }) => {
+const Post = ({ post }: { post: IGetPostByQuery }) => {
   return (
     <article>
       <header className="space-y-4 border-b border-slate pb-6 md:space-y-6">

@@ -17,8 +17,9 @@ const Links = [
 const IndexPage: NextPage = () => (
   <>
     <Seo description="Personal website and a blog, mostly related to web technologies." />
+
     <div className="hero flex h-[calc(100vh-15vh)] flex-col justify-center space-y-3">
-      <h1 className="text-5xl font-black">Hello World! 👋</h1>
+      <h1 className="text-4xl font-black sm:text-5xl">Hello World! 👋</h1>
 
       <p className="text-lg leading-7 tracking-wide md:text-xl">
         I&lsquo;m Aayush, a self-taught fullstack developer with experience in{' '}

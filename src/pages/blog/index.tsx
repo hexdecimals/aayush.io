@@ -10,6 +10,7 @@ import client from '@/lib/graphql/client';
 import getRecentPosts from '@/lib/graphql/getRecentPosts';
 import { motion } from 'framer-motion';
 import IGetRecentPosts from '@/interface/IGetRecentPosts';
+import Search from '@/components/search';
 
 const IndexPage: NextPageWithLayout = ({
   posts,
@@ -18,7 +19,8 @@ const IndexPage: NextPageWithLayout = ({
     <>
       <Seo title="Blog Posts" description="List of my recent blog posts." />
 
-      <h1 className="pb-6 text-3xl md:text-5xl">Recent Posts</h1>
+      <Search />
+      <h1 className="pb-6 pt-4 text-3xl md:text-5xl">Recent Posts</h1>
 
       <ul className="divide-y divide-slate">
         {posts.map((post: IGetRecentPosts) => (
